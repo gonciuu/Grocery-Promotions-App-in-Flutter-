@@ -1,14 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grocerypromotionsapp/screens/constans/borders.dart';
 import 'package:grocerypromotionsapp/screens/constans/text_style.dart';
 
-class Login extends StatefulWidget {
+
+class Register extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _LoginState extends State<Login> {
+class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,13 +23,13 @@ class _LoginState extends State<Login> {
               Image.network(
                   "https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-512.png",
                   scale: 4),SizedBox(height: 5.0,),
-              Text("Welcome back",
+              Text("Create Account",
                   style: bold_text.copyWith(
                       fontSize: 32.0, color: Colors.grey[900])),
               SizedBox(
                 height: 5.0,
               ),
-              Text("Sign to continue",
+              Text("Sign up to continue",
                   style: regular_text.copyWith(
                       color: Colors.grey[700], fontSize: 20.0)),
               SizedBox(
@@ -43,7 +43,7 @@ class _LoginState extends State<Login> {
                       vertical: 22.0,
                     )),
                 style:
-                    TextStyle(fontFamily: "mont", fontWeight: FontWeight.w500),
+                TextStyle(fontFamily: "mont", fontWeight: FontWeight.w500),
               ),
               SizedBox(
                 height: 10.0,
@@ -56,7 +56,7 @@ class _LoginState extends State<Login> {
                       vertical: 22.0,
                     )),
                 style:
-                    TextStyle(fontFamily: "mont", fontWeight: FontWeight.w500),
+                TextStyle(fontFamily: "mont", fontWeight: FontWeight.w500),
               ),SizedBox(height: 30.0,),
               Row(
                 children: <Widget>[
@@ -65,7 +65,7 @@ class _LoginState extends State<Login> {
                       padding: EdgeInsets.symmetric(horizontal: 40.0,vertical: 20.0),
                       onPressed: () {},
                       child: Text(
-                        "LOGIN",
+                        "REGISTER",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 18.0,
@@ -81,11 +81,11 @@ class _LoginState extends State<Login> {
                 ],
               ),SizedBox(height: 20.0,),
               Text(
-                "Don't have account? ",
+                "Have account already? ",
                 style: regular_text.copyWith(color: Colors.grey[900], fontSize: 14.0),
               ),
               Text(
-                "create new!",
+                "Sign In!",
                 style: regular_text.copyWith(color: Colors.amber, fontSize: 15.0,),
               )
             ],
