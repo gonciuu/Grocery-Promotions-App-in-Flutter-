@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:grocerypromotionsapp/auth/Authience.dart';
 import 'package:grocerypromotionsapp/screens/constans/borders.dart';
 import 'package:grocerypromotionsapp/screens/constans/text_style.dart';
 
@@ -13,6 +14,9 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+
+  String email="", password="";
+  final _auth = Authience();
   final _key = GlobalKey<FormState>();
 
   @override
@@ -55,11 +59,13 @@ class _LoginState extends State<Login> {
                     )),
                 style:
                     TextStyle(fontFamily: "mont", fontWeight: FontWeight.w500),
+                onChanged: (eml)=>setState(()=> this.email = eml),
               ),
               SizedBox(
                 height: 10.0,
               ),
               TextFormField(
+                obscureText: true,
                 validator: (psw)=> psw.length<6 ? "Enter password minimum 6 chars length":null,
                 decoration: little_radius_border.copyWith(
                     hintText: "password",
@@ -69,6 +75,7 @@ class _LoginState extends State<Login> {
                     )),
                 style:
                     TextStyle(fontFamily: "mont", fontWeight: FontWeight.w500),
+                onChanged: (psw)=>setState(()=> this.password = psw),
               ),
               SizedBox(
                 height: 30.0,
@@ -79,7 +86,16 @@ class _LoginState extends State<Login> {
                     child: FlatButton(
                       padding: EdgeInsets.symmetric(
                           horizontal: 40.0, vertical: 20.0),
-                      onPressed: () {},
+                      onPressed: () async{
+                        if(_key.currentState.validate()){
+                          dynamic result = await _auth.signInWithEmailAndPassword(this.email, this.password);
+                          if(result==null){
+                            print("Coś się yłebo");
+                          }else{
+                            print(result);
+                          }
+                        }
+                      },
                       child: Text(
                         "LOGIN",
                         style: TextStyle(

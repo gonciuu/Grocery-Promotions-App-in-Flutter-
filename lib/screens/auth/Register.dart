@@ -64,6 +64,7 @@ class _RegisterState extends State<Register> {
                 height: 10.0,
               ),
               TextFormField(
+                obscureText: true,
                 validator: (psw)=> psw.length<6 ? "Enter password minimum 6 chars length":null,
                 decoration: little_radius_border.copyWith(
                     hintText: "password",
