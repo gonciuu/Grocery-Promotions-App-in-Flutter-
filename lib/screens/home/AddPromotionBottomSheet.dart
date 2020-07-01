@@ -70,7 +70,7 @@ class _AddPromotionBottomSheetState extends State<AddPromotionBottomSheet> {
                     )),
               ),
               SizedBox(
-                height: 10.0,
+                height : 10.0,
               ),
               TextFormField(
                 style: regular_text,
