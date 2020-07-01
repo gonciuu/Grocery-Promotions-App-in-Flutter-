@@ -4,6 +4,10 @@ import 'package:grocerypromotionsapp/screens/constans/text_style.dart';
 
 
 class Register extends StatefulWidget {
+
+  final Function changeScreen;
+  Register(this.changeScreen);
+
   @override
   _RegisterState createState() => _RegisterState();
 }
@@ -80,13 +84,19 @@ class _RegisterState extends State<Register> {
                   ),
                 ],
               ),SizedBox(height: 20.0,),
-              Text(
-                "Have account already? ",
-                style: regular_text.copyWith(color: Colors.grey[900], fontSize: 14.0),
+              GestureDetector(
+                onTap: ()=>widget.changeScreen(),
+                child: Text(
+                  "Have account already? ",
+                  style: regular_text.copyWith(color: Colors.grey[900], fontSize: 14.0),
+                ),
               ),
-              Text(
-                "Sign In!",
-                style: regular_text.copyWith(color: Colors.amber, fontSize: 15.0,),
+              GestureDetector(
+                onTap: ()=>widget.changeScreen(),
+                child: Text(
+                  "Sign In!",
+                  style: regular_text.copyWith(color: Colors.amber, fontSize: 15.0,),
+                ),
               )
             ],
           ),

@@ -5,6 +5,6 @@ import 'package:grocerypromotionsapp/screens/home/Home.dart';
 class Wrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Home();
+    return Authenticate();
   }
 }
