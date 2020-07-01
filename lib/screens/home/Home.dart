@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:grocerypromotionsapp/screens/home/AddPromotionBottomSheet.dart';
 import 'package:grocerypromotionsapp/screens/home/ItemsList.dart';
 
-import 'ItemTile.dart';
 
 class Home extends StatelessWidget {
   @override

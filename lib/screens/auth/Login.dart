@@ -13,6 +13,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  final _key = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,6 +23,7 @@ class _LoginState extends State<Login> {
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 35.0),
         child: Form(
+          key: _key,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -43,6 +46,7 @@ class _LoginState extends State<Login> {
                 height: 40.0,
               ),
               TextFormField(
+                validator: (eml) => eml.isEmpty || !eml.contains('@') ? "Enter correct email" : null,
                 decoration: little_radius_border.copyWith(
                     hintText: "email",
                     contentPadding: EdgeInsets.symmetric(
@@ -56,6 +60,7 @@ class _LoginState extends State<Login> {
                 height: 10.0,
               ),
               TextFormField(
+                validator: (psw)=> psw.length<6 ? "Enter password minimum 6 chars length":null,
                 decoration: little_radius_border.copyWith(
                     hintText: "password",
                     contentPadding: EdgeInsets.symmetric(
