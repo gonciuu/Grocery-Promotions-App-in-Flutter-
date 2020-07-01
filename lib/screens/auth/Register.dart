@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocerypromotionsapp/auth/Authience.dart';
 import 'package:grocerypromotionsapp/screens/constans/borders.dart';
 import 'package:grocerypromotionsapp/screens/constans/text_style.dart';
 
@@ -13,6 +14,12 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+
+  String email="";
+  String password="";
+
+  final _authience = Authience();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,6 +55,7 @@ class _RegisterState extends State<Register> {
                     )),
                 style:
                 TextStyle(fontFamily: "mont", fontWeight: FontWeight.w500),
+                onChanged: (eml)=> setState(()=>this.email = eml),
               ),
               SizedBox(
                 height: 10.0,
@@ -61,13 +69,21 @@ class _RegisterState extends State<Register> {
                     )),
                 style:
                 TextStyle(fontFamily: "mont", fontWeight: FontWeight.w500),
+                onChanged: (psw)=> setState(()=>this.password = psw),
               ),SizedBox(height: 30.0,),
               Row(
                 children: <Widget>[
                   Expanded(
                     child: FlatButton(
                       padding: EdgeInsets.symmetric(horizontal: 40.0,vertical: 20.0),
-                      onPressed: () {},
+                      onPressed: () async{
+                        dynamic result = await _authience.registerWithEmailAndPassword(email, password);
+                        if(result==null){
+                          print("Coś się yłebo");
+                        }else{
+                          print(result);
+                        }
+                      } ,
                       child: Text(
                         "REGISTER",
                         style: TextStyle(
