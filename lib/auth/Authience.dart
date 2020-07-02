@@ -28,4 +28,7 @@ class Authience{
     }
   }
 
+  Stream<FirebaseUser> get user => auth.onAuthStateChanged;
+
+
 }
