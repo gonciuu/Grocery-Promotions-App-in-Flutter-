@@ -30,5 +30,13 @@ class Authience{
 
   Stream<FirebaseUser> get user => auth.onAuthStateChanged;
 
+  Future logOut() async{
+    try{
+      return await auth.signOut();
+    }catch(e){
+      return null;
+    }
+  }
+
 
 }

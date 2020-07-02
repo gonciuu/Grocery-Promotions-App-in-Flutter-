@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:grocerypromotionsapp/auth/Authience.dart';
 import 'package:grocerypromotionsapp/screens/home/AddPromotionBottomSheet.dart';
 import 'package:grocerypromotionsapp/screens/home/ItemsList.dart';
 
 
 class Home extends StatelessWidget {
+
+  final _auth = Authience();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +35,9 @@ class Home extends StatelessWidget {
                   fontFamily: "mont",
                   fontWeight: FontWeight.w600),
             ),
-            onPressed: () {},
+            onPressed: () async{
+              await _auth.logOut();
+            },
           )
         ],
       ),
