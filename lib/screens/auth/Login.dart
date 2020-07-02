@@ -21,6 +21,8 @@ class _LoginState extends State<Login> {
   final _key = GlobalKey<FormState>();
   bool isLoading = false;
 
+  String errorMessage = "";
+
   @override
   Widget build(BuildContext context) {
     return isLoading ? Loading() :  Scaffold(
@@ -90,10 +92,10 @@ class _LoginState extends State<Login> {
                           horizontal: 40.0, vertical: 20.0),
                       onPressed: () async{
                         if(_key.currentState.validate()){
-                          setState(()=> isLoading = true);
+                          setState((){ isLoading = true;errorMessage = "";});
                           dynamic result = await _auth.signInWithEmailAndPassword(this.email, this.password);
                           if(result==null){
-                            setState(()=> isLoading = false);
+                            setState((){ isLoading = false;errorMessage = "Please check your email and password";});
                           }else{
                             print(result);
                           }
@@ -135,7 +137,24 @@ class _LoginState extends State<Login> {
                     fontSize: 15.0,
                   ),
                 ),
-              )
+              ),SizedBox(height: 15.0,),
+              Row(
+
+                children: <Widget>[
+                  Expanded(
+                    child: Text(
+                      "$errorMessage",
+                      style: TextStyle(
+                          color: Colors.red[500],
+                          fontSize: 14.0,
+                          fontFamily: "mont",
+                          fontWeight: FontWeight.w500
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
