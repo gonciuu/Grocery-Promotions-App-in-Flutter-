@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grocerypromotionsapp/auth/Authience.dart';
+import 'package:grocerypromotionsapp/screens/constans/Loading.dart';
 import 'package:grocerypromotionsapp/screens/constans/borders.dart';
 import 'package:grocerypromotionsapp/screens/constans/text_style.dart';
 
@@ -17,13 +18,14 @@ class _RegisterState extends State<Register> {
 
   String email="";
   String password="";
+  bool loading = false;
 
   final _authience = Authience();
   final _key = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading ? Loading() :Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: Container(
@@ -83,8 +85,10 @@ class _RegisterState extends State<Register> {
                       padding: EdgeInsets.symmetric(horizontal: 40.0,vertical: 20.0),
                       onPressed: () async{
                         if(_key.currentState.validate()){
+                          setState(()=> loading = true);
                           dynamic result = await _authience.registerWithEmailAndPassword(email, password);
                           if(result==null){
+                            setState(()=> loading = false);
                             print("Coś się yłebo");
                           }else{
                             print(result);

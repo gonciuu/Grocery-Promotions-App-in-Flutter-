@@ -12,7 +12,7 @@ class ItemTile extends StatelessWidget {
           child: ListTile(
             title: Text("Example Item"),
             leading: CircleAvatar(
-              backgroundImage: NetworkImage("https://bi.im-g.pl/im/6f/62/17/z24521583V,W-sredniej-wielkosci-wegetarianskiej-pizzy-Margher.jpg"),
+              backgroundImage: NetworkImage("https://image.ceneostatic.pl/data/products/15164190/i-pudliszki-ketchup-lagodny-700g.jpg"),
               radius: 25.0,
             ),
             subtitle: Text("25£, Biedronka")

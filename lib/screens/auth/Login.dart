@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grocerypromotionsapp/auth/Authience.dart';
+import 'package:grocerypromotionsapp/screens/constans/Loading.dart';
 import 'package:grocerypromotionsapp/screens/constans/borders.dart';
 import 'package:grocerypromotionsapp/screens/constans/text_style.dart';
 
@@ -18,10 +19,11 @@ class _LoginState extends State<Login> {
   String email="", password="";
   final _auth = Authience();
   final _key = GlobalKey<FormState>();
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return isLoading ? Loading() :  Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: Container(
@@ -88,9 +90,10 @@ class _LoginState extends State<Login> {
                           horizontal: 40.0, vertical: 20.0),
                       onPressed: () async{
                         if(_key.currentState.validate()){
+                          setState(()=> isLoading = true);
                           dynamic result = await _auth.signInWithEmailAndPassword(this.email, this.password);
                           if(result==null){
-                            print("Coś się yłebo");
+                            setState(()=> isLoading = false);
                           }else{
                             print(result);
                           }
