@@ -118,19 +118,13 @@ class _AddPromotionBottomSheetState extends State<AddPromotionBottomSheet> {
                       onPressed: () async {
                         if(_key.currentState.validate()) {
                           dynamic uid = await Authience().getId();
-                          dynamic result = await _db.addProduct(
-                              this._name,
-                              this._shopName,
-                              this._photoUrl,
-                              this._price,
-                              uid,
-                              DateTime
-                                  .now()
-                                  .millisecondsSinceEpoch);
+                          dynamic result = await _db.addProduct(this._name, this._shopName, this._photoUrl, this._price, uid, DateTime.now().millisecondsSinceEpoch);
                           if (result == null && uid == null) {
                             setState(() =>
                             this.errorMessage =
                             "Something went wrong. Check your internet connection");
+                          }else{
+                            Navigator.pop(context);
                           }
                         }
                       },

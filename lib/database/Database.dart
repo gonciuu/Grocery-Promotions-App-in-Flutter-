@@ -24,10 +24,10 @@ class Database{
 
   List<Product> _productListFromSnapshot(QuerySnapshot snapshot){
     return snapshot.documents.map((e) => Product(
-      name: e.data['name'],
-      shopName: e.data["shopName"],
-      photoUrl: e.data["photoUrl"],
-      price: e.data['price'],
+      name: e.data['name'] ?? "name",
+      shopName: e.data["shopName"] ?? "shop_name",
+      photoUrl: e.data["photoUrl"] ?? "photo_url",
+      price: e.data['price'] ?? 0.0,
       userId: e.data['userId'],
       id: e.data['id']
     )).toList();

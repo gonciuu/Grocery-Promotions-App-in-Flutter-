@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:grocerypromotionsapp/database/Product.dart';
 
 class ItemTile extends StatelessWidget {
+
+  final Product product;
+  ItemTile(this.product);
 
   @override
   Widget build(BuildContext context) {
@@ -10,12 +14,12 @@ class ItemTile extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(4.0),
           child: ListTile(
-            title: Text("Example Item"),
-            leading: CircleAvatar(
-              backgroundImage: NetworkImage("https://image.ceneostatic.pl/data/products/15164190/i-pudliszki-ketchup-lagodny-700g.jpg"),
-              radius: 25.0,
+            title: Text(product.name),
+            leading: ClipRRect(
+              child: FadeInImage.assetNetwork( image: product.photoUrl, placeholder: 'img/camera.png',width: 70.0,height: 70.0,),
+              borderRadius: BorderRadius.circular(20.0),
             ),
-            subtitle: Text("25£, Biedronka")
+            subtitle: Text("${product.price}£, ${product.shopName}"),
           ),
         ),
       ),
