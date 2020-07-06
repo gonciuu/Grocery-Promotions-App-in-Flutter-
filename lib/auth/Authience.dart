@@ -38,4 +38,12 @@ class Authience{
     }
   }
 
+  Future getId() async {
+    try{
+      FirebaseUser user = await auth.currentUser();
+      return user.uid;
+    }catch(e){
+      return null;
+    }
+  }
 }
