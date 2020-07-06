@@ -9,6 +9,10 @@ class AddPromotionBottomSheet extends StatefulWidget {
 }
 
 class _AddPromotionBottomSheetState extends State<AddPromotionBottomSheet> {
+
+  String _name,_shopName,photoUrl,userId;
+  double price;
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
