@@ -21,4 +21,18 @@ class Database{
     }
   }
 
+
+  List<Product> _productListFromSnapshot(QuerySnapshot snapshot){
+    return snapshot.documents.map((e) => Product(
+      name: e.data['name'],
+      shopName: e.data["shopName"],
+      photoUrl: e.data["photoUrl"],
+      price: e.data['price'],
+      userId: e.data['userId'],
+      id: e.data['id']
+    )).toList();
+  }
+
+  Stream<List<Product>> get products => productsCollection.snapshots().map(_productListFromSnapshot);
+
 }
