@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:grocerypromotionsapp/auth/Authience.dart';
+import 'package:grocerypromotionsapp/database/Database.dart';
 import 'package:grocerypromotionsapp/database/Product.dart';
 import 'package:grocerypromotionsapp/screens/constans/Loading.dart';
 
@@ -45,9 +47,13 @@ class _ItemTileState extends State<ItemTile> {
               ),
               subtitle: Text(
                   "${widget.product.price}£, ${widget.product.shopName}"),
-              trailing: userId == widget.product.userId ? Icon(
-                Icons.delete, size: 32.0, color: Colors.amber,) : Icon(
-                Icons.data_usage, size: 32.0, color: Colors.amber,)
+              trailing: userId == widget.product.userId ? GestureDetector(
+                onTap: () async{
+                  await Database().deleteProduct(widget.product.id.toString());
+                },
+                child: Icon(
+                  Icons.delete, size: 32.0, color: Colors.amber,),
+              ) : null
           ),
         ),
       ),

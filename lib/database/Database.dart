@@ -35,4 +35,14 @@ class Database{
 
   Stream<List<Product>> get products => productsCollection.snapshots().map(_productListFromSnapshot);
 
+
+  Future deleteProduct(String id) async{
+    try{
+      return await productsCollection.document(id).delete();
+    }catch(e){
+      print(e);
+      return null;
+    }
+  }
+
 }
